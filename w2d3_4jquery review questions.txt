@@ -1,36 +1,54 @@
 
-
 jQuery Weds Thurs 5/10 - 11/ 2017
 
 Review Questions
 
 Weds Identification and Traversal
 What is the jQuery way to do window.onload = function () ...   ?
-Write a jQuery selector to find all paragraphs.
-Write a jQuery selector to find all list items inside paragraphs that have the class .donkey  .
-What are the jQuery symbols used in selecting:  by identifier, by class, children descendents, any descendent,
-  by collections of selectors, by HTML element, by attribute, by attribute value?
-What does the jQuery filter ' :even ' do?  Give an example.
+Write a jQuery selector to find all paragraphs. Answer: $("p")
+Write a jQuery selector to find all list items inside paragraphs that have the class .donkey . Answer: $("p.donkey li")
+What are the jQuery symbols used in selecting:  by identifier(#), by class(.), children descendents(>), any descendent ($("ancestor descendant" )),
+  by collections of selectors, by HTML element('tag'), by attribute([name]), by attribute value([name='value']) 
+What does the jQuery filter ' :even ' do?  Give an example. Answer: it selects even elements, Example: $( "tr:even" ); . It select "tr" elements that has indexes are 1, 3, 5....
 What is the difference of the jQuery function and 'a jQuery object' ?
-What does it mean to use $ as a wrapper?  What is the purpose?
-What is the jQuery syntax for searching a subtree of elements?
-Give an example of finding the parent nodes of all div elements.
-Give an example of finding the children nodes of all div elements.
-Give an example of finding the descendent nodes of all div elements.
-Give an example of finding the sibling nodes of all div elements.
-Give an example of finding the third sibling nodes of all div elements.
-What is the difference of $("p").each(myfunction) and $.each(myArray, myfunction)?
-
+- jQuery function:refers to the global jQuery function/object or the $ function
+depending on the context.
+- jQuery object: the object returned by the jQuery function that often represents a
+group of elements.
+What does it mean to use $ as a wrapper?  Answer: convert regular DOM objects to a jQuery object. What is the purpose? Answer: adds extra functionality to DOM elements
+and give it the jQuery upgrade.
+What is the jQuery syntax for searching a subtree of elements? Answer: const elem = $("#id"); const specials = $("li.special", elem);
+Give an example of finding the parent nodes of all div elements. Answer: $('div').parent();
+Give an example of finding the children nodes of all div elements. Answer: $('div').children();
+Give an example of finding the descendent nodes of all div elements. Answer: $("div").find("*");
+Give an example of finding the sibling nodes of all div elements. Answer: $("div").siblings();
+Give an example of finding the third sibling nodes of all div elements. $("div").siblings().eq(2);
+What is the difference of $("p").each(myfunction) and $.each(myArray, myfunction)? Answer: $("p").each(myfunction): each element is an jquery object , $.each(myArray, myfunction): each element is a object/DOM object
 
 Thursday Node and Tree Manipulation and Events
 Node Manipulation
-Show how to add class .puppy to all divs.
-Show how to remove class .puppy from all divs.
-Show how to remove class .puppy from any div that has it and add .puppy to any div that does not have it.
-What is the syntax for getting a style property in jQuery?
-What is the syntax for setting a style property in jQuery?
+Show how to add class .puppy to all divs. Answer: $('div').addClass("puppy");
+Show how to remove class .puppy from all divs. Answer: $('div').removeClass("puppy");
+Show how to remove class .puppy from any div that has it and add .puppy to any div that does not have it. 
+	Answer: $("div").each(function (idx, e) {
+                eJ = $(e);
+                if (eJ.hasClass('puppy')) {
+                    eJ.removeClass('puppy');
+                } else {
+                    eJ.addClass('puppy')
+                }
+            });
+What is the syntax for getting a style property in jQuery? Answer: $("#id").css("attribute");
+What is the syntax for setting a style property in jQuery? Answer: $("#id").css("attribute");
 What is unobtrusive styling?  What is the implication of this for setting style properties in jQuery versus setting classes?
-What is the important differenc in how jQuery setter and getters work?
+- It is well-written JavaScript code should contain as little CSS as possible
+- use JS to set CSS classes/IDs on elements
+- define the styles of those classes/IDs in your CSS file
+
+What is the important difference in how jQuery setter and getters work?
+-Getters typically operate only on the first of the jQuery object's selected elements.
+- Setters typically operate on all of the selected DOM elements
+
 Explain why the following will not work (as expected):
    $(“div").css("top", parseInt($(“div").css("top")) + 100 + "px");
 Describe what is returned by each of the following and the implications of this for 'chaining':  
@@ -38,29 +56,36 @@ Describe what is returned by each of the following and the implications of this 
   $("#myid").css("margin-left");
   $("#myid").addClass("special");
 What is the difference of .html() and .text()?  Which should be favored to avoid 'HTML hacking'?
+.html: get/set the innerHTML without escaping html tags
+.text: get/set the innerHTML, HTML escapes the text first
+- To avoid 'HTML hacking', we should use .innerHTML method.
 
 Tree Manipulation
 How would you create a new div node with id = 'BigRed' and class = fancy in jQuery?  (use the property object syntax)
-Will this appear in the DOM when you create it?
-What is necessary to add it to the DOM?
+- $("<div>", { "id": "BigRed", "class": "fancy"});
+
+Will this appear in the DOM when you create it? Answer: No
+What is necessary to add it to the DOM? Answer: It needs to use the "append" method to add it to DOM
 What are the 4 jQuery function signatures?  Explain what the argument types are for each and what each returns.
+- Responding to the page ready event ,  binds a function to be executed when the DOM has finished loading.
+	$(function);
+-  Identifying elements and return jQuery array-like object of DOM objects
+$("selector", [context]);
+
+- Upgrading DOM elements and return an jQuery objects
+$(elements);
+
+- Creating new elements and return a node element as in jquery object
+$("<html>", [properties]);
 
 Event Handling
-How would you attach the function myFunc as click event handler to all divs using jQuery?
-How would you trigger a click event for all divs?
+How would you attach the function myFunc as click event handler to all divs using jQuery? Answer: $('div').click(myFunc);
+How would you trigger a click event for all divs? Answer: $("div").click();
 What is an event object?  What are clientX, pageX, and screenX for mouse event objects?
-
-
-
-
-
-
-
-
-
-
-
-
+- Event object is accepted as an optional parameter to represent the event that is occurring of Event handlers function
+-clientX: the left position of the content area (the viewport) of the browser window. This point does not move even if the user moves a scrollbar from within the browser.
+-pageX: the left position of the fully rendered content area in the browser. This reference point is below the url bar and back button in the upper left.
+-screenX: the left position of the physical screen/monitor, this reference point only moves if you change the monitor resolution.
 
 
 
