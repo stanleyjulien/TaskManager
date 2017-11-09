@@ -1,0 +1,30 @@
+
+
+Scope Lesson  Monday 11/5/2017
+
+Review Questions
+
+What is an implied global and how is it created?  Are these allowed when "use strict" is in effect?
+What is the difference of block scope and functional scope?  Which does Java support?  Which does JavaScript support?
+What are the 2 phases of JavaScripe code execution?
+How does hoisting work with variable declarations?  with function declarations?  with function expressions?
+What is the scope chain?  
+What is the execution context and stack?
+What is best practice for const, let, and var?
+What is the difference between const and let?
+What is the difference between let and var?
+How does the arrow function notation relate to an anonymous function expression?
+What is overloading and how does it work in Java and JavaScript?
+What is the argument object and how does it relate to the rest parameter?
+What is a closure?  What is a free variable?
+What does it mean for a closure to have a reference to a free variable?
+Why are closures often used with callback functions?
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,75 @@
+
+
+jQuery Weds Thurs 5/10 - 11/ 2017
+
+Review Questions
+
+Weds Identification and Traversal
+What is the jQuery way to do window.onload = function () ...   ?
+Write a jQuery selector to find all paragraphs.
+Write a jQuery selector to find all list items inside paragraphs that have the class .donkey  .
+What are the jQuery symbols used in selecting:  by identifier, by class, children descendents, any descendent,
+  by collections of selectors, by HTML element, by attribute, by attribute value?
+What does the jQuery filter ' :even ' do?  Give an example.
+What is the difference of the jQuery function and 'a jQuery object' ?
+What does it mean to use $ as a wrapper?  What is the purpose?
+What is the jQuery syntax for searching a subtree of elements?
+Give an example of finding the parent nodes of all div elements.
+Give an example of finding the children nodes of all div elements.
+Give an example of finding the descendent nodes of all div elements.
+Give an example of finding the sibling nodes of all div elements.
+Give an example of finding the third sibling nodes of all div elements.
+What is the difference of $("p").each(myfunction) and $.each(myArray, myfunction)?
+
+
+Thursday Node and Tree Manipulation and Events
+Node Manipulation
+Show how to add class .puppy to all divs.
+Show how to remove class .puppy from all divs.
+Show how to remove class .puppy from any div that has it and add .puppy to any div that does not have it.
+What is the syntax for getting a style property in jQuery?
+What is the syntax for setting a style property in jQuery?
+What is unobtrusive styling?  What is the implication of this for setting style properties in jQuery versus setting classes?
+What is the important differenc in how jQuery setter and getters work?
+Explain why the following will not work (as expected):
+   $(“div").css("top", parseInt($(“div").css("top")) + 100 + "px");
+Describe what is returned by each of the following and the implications of this for 'chaining':  
+  $("#myid");
+  $("#myid").css("margin-left");
+  $("#myid").addClass("special");
+What is the difference of .html() and .text()?  Which should be favored to avoid 'HTML hacking'?
+
+Tree Manipulation
+How would you create a new div node with id = 'BigRed' and class = fancy in jQuery?  (use the property object syntax)
+Will this appear in the DOM when you create it?
+What is necessary to add it to the DOM?
+What are the 4 jQuery function signatures?  Explain what the argument types are for each and what each returns.
+
+Event Handling
+How would you attach the function myFunc as click event handler to all divs using jQuery?
+How would you trigger a click event for all divs?
+What is an event object?  What are clientX, pageX, and screenX for mouse event objects?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

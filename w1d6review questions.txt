@@ -1,0 +1,24 @@
+
+W1D6 Review questions  5/5/17
+
+- what are the 6 global objects available to every JavaScript program (in a browser)
+- which one holds the other 5 as properties
+- how is document related to the DOM
+- where are event handlers attached with unobtrusive JavaScript?
+- give an example of a problem that could arise from obtrusive JavaScript.
+- when does JavaScript code run?
+- what will happen if you call a function to attach an event handler in the head of the page?
+- when does the window.onload event run?
+- is window.onload a property or a method or both?
+- what is the difference of:
+   * okButton.onclick = okayClick();
+   * okButton.onclick = okayClick;
+- innerHTML is a property of what kind of element?  What does it contain as its value?
+- What is innerHTML hacking and why is it bad style?
+- Good style allows what to be assigned to innerHTML?
+- what is the style property for a DOM element?  Is it an object?  What does it have for properties?
+- what is unobtrusive styling with respect to JavaScript code?
+- what is the difference of setTimeout and setInterval?
+- what do they return?
+- what is strict mode?
+

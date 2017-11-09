@@ -1,0 +1,39 @@
+last update:  10/23/2017kl
+
+What is a form input parameter?
+What is the difference of get and post methods?
+What does the action attribute of form specify?
+What does the method attribute of form specify?
+Why is the name attribute important on an input element?
+What does the checked attribute do on a checkbox element?
+What does the multiple attribute do on a select element?
+What does the browser do when an input element of type submit is clicked?
+What happens if the submit button is not inside of a form?
+What is the meaning of the following CSS selector pattern?  element[attribute="value"] 
+What does the browser do with the pattern attribute in an input element?
+The regular expression 'abc' is supposed to match 'abcdef', but will do so in the pattern attribute of a text element. Why?
+Write a regular expression to check if for a pattern containing 1 or more word characters followed by '@' followed by 1 or more word characters.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

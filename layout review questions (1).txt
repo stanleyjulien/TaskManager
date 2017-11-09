@@ -1,0 +1,49 @@
+
+
+What is the difference between div and span?  How does a browser normally align divs and spans?
+How are divs related to the HTML5 page section tags?
+What are the two CSS context selector syntaxes?  Give examples of each.
+What is an id selector?
+What is a class selector?
+What is a type selector?
+Give an example of grouping type selectors.
+Give an example of a type selector with a class selector.
+Give an example of a selector that finds all h1 elements that have a class of 'important'
+What is the difference of padding and margin in the box model?
+What do the standard width and height measure in the box model?
+What is margin collapse?
+How can you center a block element using auto margin?
+Which size and margin properties are used by the browser for inline boxes?
+What does the text-align property do for inline and block elements?
+What does the vertical-align property do?
+What are the values of the float property and how do they affect the alignment of elements on the page?
+How does the clear property interact with float?
+How does the overflow property interact with float?
+What does the column-count property do?
+Explain the 4 position property values and their differences.
+When should you use alignment versus float versus position for laying out elements on a page?
+What does display: inline do?  How is it different from inline-block?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,26 @@
+
+
+JavaScript Intro lesson review questions
+
+What are the 8 JavaScript types?
+What is the difference of 'var' and 'let'?
+What is the difference of == and ===?  Which should be used and why?
+What is 2 + "2"?  What is "2" + 2?  2 + 2?
+How can you convert from a string to an int or float?
+What values are falsey?  What values are truthy?
+What is the value of !!0 and why?
+What is the difference of null and undefined?
+Give 2 ways to initialize an array with 'a' 'b' 'c' .
+What operations will operate an array like a stack?  like a queue?
+What is the difference of a function declaration and function expression?
+What is the DOM?  How does it relate to HTML?  How does it relate to JavaScript?
+What does document.getElementById("abc") do?
+
+
+
+
+
+
+
+
+
