@@ -1,20 +1,72 @@
-
-
 JavaScript Intro lesson review questions
 
 What are the 8 JavaScript types?
+ - 6 data types (from the book): String, Number, Boolean, Null, Undefined, Object
+
 What is the difference of 'var' and 'let'?
+ - 'let' defines block scope variables
+ - 'var' defines function scope variables
+ - Variables declared with 'let' are not accessible before they're declared in their enclosing block
+
 What is the difference of == and ===?  Which should be used and why?
+	'===' checks both type and value, == only check the value
+	'===' should be used. Reason: for more precise comparison. 
+	Example: 
+		true == 1 //true
+		true === 1 // false
+
 What is 2 + "2"?  What is "2" + 2?  2 + 2?
+	2 + "2" = "22"
+	"2" + 2 = "22"
+	2 + 2 = 4
+	
 How can you convert from a string to an int or float?
+	Use parseInt() or parseFloat()
+
 What values are falsey?  What values are truthy?
+	falsey values: false, 0, 0.0, NaN, empty String (""), null, undefined.
+	truthy values: anything else, include objects.
+
 What is the value of !!0 and why?
+	!!0 = false
+	Reason: !0 = true 
+			!!0 = !true = false;
+
 What is the difference of null and undefined?
+	undefined: has been declared, but no value assigned
+	null: exists, and was specially assigned an value of null
+
 Give 2 ways to initialize an array with 'a' 'b' 'c' .
+	way #1:
+		let arr1 = ['a', 'b', 'c'];
+	
+	way #2:
+		let arr2 = new Array('a', 'b', 'c');
+	
+	way #3:
+		let arr3 = Array('a', 'b', 'c');
+	
+	way #4:
+		let arr4 = [];
+		arr4[0] = 'a';
+		arr4[1] = 'b';
+		arr34[2] = 'c';
+	
 What operations will operate an array like a stack?  like a queue?
+	stack: push(), pop()
+	queue: unship(), ship()
+
 What is the difference of a function declaration and function expression?
+	- The function name can be omitted in function expression to create anonymous function. Function expression can be used as a IIFE (Immediately Invoked Function Expression) which runs as soon as it is defined.
+	- Function declarations are hoisted, function expressions are not.
+
 What is the DOM?  How does it relate to HTML?  How does it relate to JavaScript?
+	- DOM is a programming API for documents (HTML, XML). DOM treats document as a tree structure wherein each node is an object representing a part of the document.
+	- Every element on the HTML page has a corresponding DOM object.
+	- Use JavaScript to access/modify the attributes of the DOM object.
+
 What does document.getElementById("abc") do?
+	Return the element that has the id="abc'.
 
 
 
