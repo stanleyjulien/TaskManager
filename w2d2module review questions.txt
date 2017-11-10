@@ -1,5 +1,4 @@
 
-
 Revealing Module Lesson  Tuesday 5/9/2017
 
 Review Questions
@@ -14,7 +13,7 @@ Show how to add a new property to an object literal.
 - Use dot syntax to add a new property to it as follows: obj.prop2 = 'data here';
 
 How is the 'this' keyword used in a JavaScript object?
-- this is the object that "owns" the JavaScript code.
+- this is the object that "owns" the JavaScript code .
 
 What do the 'for of' and 'for in' loops do and how are they different? 
 - Both for..of and for..in statements iterate over lists; 
