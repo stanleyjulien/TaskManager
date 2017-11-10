@@ -4,27 +4,64 @@ Scope Lesson  Monday 11/5/2017
 
 Review Questions
 
-What is an implied global and how is it created?  Are these allowed when "use strict" is in effect?
-What is the difference of block scope and functional scope?  Which does Java support?  Which does JavaScript support?
-What are the 2 phases of JavaScripe code execution?
-How does hoisting work with variable declarations?  with function declarations?  with function expressions?
-What is the scope chain?  
-What is the execution context and stack?
-What is best practice for const, let, and var?
-What is the difference between const and let?
-What is the difference between let and var?
-How does the arrow function notation relate to an anonymous function expression?
-What is overloading and how does it work in Java and JavaScript?
-What is the argument object and how does it relate to the rest parameter?
-What is a closure?  What is a free variable?
-What does it mean for a closure to have a reference to a free variable?
-Why are closures often used with callback functions?
+1) What is an implied global and how is it created?  Are these allowed when "use strict" is in effect?
+- If you assign a value to a variable without var, JS assumes you want a new global variable with that name.
+- Yes
+2) What is the difference of block scope and functional scope?  Which does Java support?  Which does JavaScript support?
+- global scope: global environment for functions, vars, etc.
+- function scope: every function gets its own inner scope
+- Java supports both block and function scope.
+- JavaScript does NOT support block scope. It supports functional scope.
 
+3) What are the 2 phases of JavaScript code execution?
+- In first phase: JS engine looks through all global code for functions and global variables (hoisting).
+- In second phase, JS engine will execute your code line-by-line and call functions and create execution context for every function(scope) in the execution stack.
 
+4) How does hoisting work with variable declarations?  with function declarations?  with function expressions?
+- For variable declaration: moves all variables to the beginning of their direct scopes (function)
+- For function declaration: moves it to the beginning of a scope
+- For function expression: Function expressions are not hoisted, so cannot use function expression functions before they are defined.
 
+5) What is the scope chain?
+The chain or linked list of execution contexts on the stack that JS checks to find bindings for free variables
 
+6) What is the execution context and stack?
+Execution context contains variable bindings for functions on the runtime stack of function execution
 
+7) What is best practice for const, let, and var?
+- Using a variable defined with 'var' before the declaration, it’s hoisted and we usually get no error with value undefined.
+- Using let or const, there will be no hoisting and we will receive a reference error if used with no declaration.
+=> Best practice is to use const or let and declare them before using. Using 'const' by default and only use 'let' if you need update variable later.
 
+8) What is the difference between const and let?
+- 'const' cannot be reassigned. An error will be thrown if you try to re-assign value for 'const' variable
 
+9) What is the difference between let and var?
+- let: is scoped in its enclosing block (block scope)
+- var's scope is function scope.
 
+10) How does the arrow function notation relate to an anonymous function expression?
+- Arrow functions can be a shorthand for an anonymous function in callbacks.
+const multiply = function(num1, num2) {
+	return num1 * num2;
+}
+equivalent to:
+const multiply = (num1, num2) => num1 * num2;
 
+11) What is overloading and how does it work in Java and JavaScript?
+- Overloading: different functions to have same name, but different signatures.
+- In JavaScript: No overloading. JavaScript ignores extra arguments and uses undefined for missing arguments.
+
+12) What is the argument object and how does it relate to the rest parameter?
+- The arguments object is an Array-like object corresponding to the arguments passed to a function.
+- Rest parameters are only the ones that haven't been given a separate name, while the arguments object contains all arguments passed to the function
+
+13) What is a closure?  What is a free variable?
+- A clousure is an inner function that has access to the outer function's variables
+- A free variable is a variable referred to by a function that is not one of its parameters or local variables
+
+14) What does it mean for a closure to have a reference to a free variable?
+- An inner function that uses a free variable is called a closure
+
+15) Why are closures often used with callback functions?
+- Because a closure can be used as a callback function which often uses free variables of outer function
