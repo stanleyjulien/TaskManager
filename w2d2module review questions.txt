@@ -5,22 +5,69 @@ Revealing Module Lesson  Tuesday 5/9/2017
 Review Questions
 
 Give an example of creating an object literal?
+var pt = {
+'x': 4,
+'y': 3
+};
+
 Show how to add a new property to an object literal.
+- Use dot syntax to add a new property to it as follows: obj.prop2 = 'data here';
+
 How is the 'this' keyword used in a JavaScript object?
-What do the 'for of' and 'for in' loops do and how are they different?
-What does it mean that 'this' is an implicit variable in every Java object?
-What does 'this' refer to in a JavaScript function?
-What does 'this' refer to in a JavaScript method?
-What does 'this' refer to in an inner function of a JavaScript method?
-What does 'this' refer to in an inner function of a JavaScript method if it is defined using the arrow notation?
-What is the Self Pattern?
-What does 'this' refer to in an event handler?
-How are call and apply related?
+- this is the object that "owns" the JavaScript code.
+
+What do the 'for of' and 'for in' loops do and how are they different? 
+- Both for..of and for..in statements iterate over lists; 
+	+ for..in returns a list of keys on the object being iterated,
+	+ for..of returns a list of values of the numeric properties of the object being iterated.
+
+What does it mean that 'this' is an implicit variable in every Java object? Answer: "this" is the object itself
+What does 'this' refer to in a JavaScript function? Answer: "this" is the object that "owns" the function
+What does 'this' refer to in a JavaScript method? Answer: "this" is the window
+What does 'this' refer to in an inner function of a JavaScript method? Answer: "this" is the window
+What does 'this' refer to in an inner function of a JavaScript method if it is defined using the arrow notation? 
+-‘this’ will refer to surrounding lexical scope inside arrow function
+
+What is the Self Pattern? Answer: Inside objects Self Pattern always create a “self” variable and assign “this” to it. Use “Self”
+anywhere else
+
+What does 'this' refer to in an event handler?  Answer: it always refer to the invoker
+
+How are call and apply related? Answer: when you want to invoke the function immediately, and modify the context
+func.call(this, arg1, arg2...);
+func.apply(this, [arg1, arg2...]);
+
 How does bind relate to call?
-What is 'function borowing'?  Can it be done in Java?
-What is the revealing module pattern?  What is 'revealed'?
+What is 'function borrowing'?  Answer: This is using a defined function from an object using binding. Can it be done in Java? Yes, it is interface in Java.
+What is the revealing module pattern? Answer: to control the access methods inside the object such as focusing on public & private methods  What is 'revealed'? Answer:
 How does the revealing module pattern provide private and public methods and properties?
+Answer: private method is default and public method bases on the definition inside "return" keyword, the properties will be access via the public method.
 What is the difference of the revealing module pattern and the module factory example?
+revealing module pattern is an object and the module factory is an function.
+Exmaple:
+RMP:	var counter = (function() {
+            var privateCounter = 0; //private data
+            function changeBy(val) { //private inner function
+                privateCounter += val;
+            }
+            function value() {
+                return privateCounter;
+            }
+            return {value:value}
+        })();
+MF:
+        var makeCounter = function() {
+            var privateCounter = 0;
+            function changeBy(val) {
+                privateCounter += val;
+            }
+            function value() {
+                return privateCounter;
+            }
+            return {
+                value: value}
+        };
+
 
 
 
