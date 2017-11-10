@@ -4,7 +4,7 @@ jQuery Weds Thurs 5/10 - 11/ 2017
 Review Questions
 
 Weds Identification and Traversal
-What is the jQuery way to do window.onload = function () ...   ?
+What is the jQuery way to do window.onload = function () ...   ? Answer: it means after all content (e.g. images) also has been loaded, the jquery code will be loaded.
 Write a jQuery selector to find all paragraphs. Answer: $("p")
 Write a jQuery selector to find all list items inside paragraphs that have the class .donkey . Answer: $("p.donkey li")
 What are the jQuery symbols used in selecting:  by identifier(#), by class(.), children descendents(>), any descendent ($("ancestor descendant" )),
