@@ -1,28 +1,91 @@
-
+//Ha
 
 What is the difference between div and span?  How does a browser normally align divs and spans?
+- div is block element and is often used to group large chunk of html code. Default width of divs is 100%
+- span is in-line element and is often used for small amount of code in a paragraph. Default width of spans is content’s length
+A browser normally align divs and spans at top, left.
+
+
 How are divs related to the HTML5 page section tags?
+- divs are often nested to section
+
+
 What are the two CSS context selector syntaxes?  Give examples of each.
+- selector1 selector2 {properties}: applies the given properties to selector2 only if it is inside a selector1 on the page
+- selector1 > selector2 {properties}: applies the given properties to selector2 only if it is direct child of selector1 (in the DOM)
+
+
 What is an id selector?
+- The id selector uses the id attribute of an HTML element to select a specific element.
+
 What is a class selector?
+- The class selector selects elements with a specific class attribute.
+
 What is a type selector?
+- The type selector selects elements based on the element name.
+
 Give an example of grouping type selectors.
+- group selector: h1, h2, p {…}
+
 Give an example of a type selector with a class selector.
+- div.myclass
+
 Give an example of a selector that finds all h1 elements that have a class of 'important'
+-h1.important
+
 What is the difference of padding and margin in the box model?
+- padding between the content and the border (inside)
+- margin between the border and other content (outside)
+
 What do the standard width and height measure in the box model?
+- width = content width + L/R padding + L/R border + L/R margin- height = content height + T/B padding + T/B border + T/B margin
+
 What is margin collapse?
+- margins on different elements that touch each other will collapse, forming a single margin that is equal to the greater of the adjoining margins
+
 How can you center a block element using auto margin?
+- margin: auto;
+
 Which size and margin properties are used by the browser for inline boxes?
+- size properties(width, height, min-width…) are ignored
+- margin-top & margin-bottom are ignored, margin-left & margin-right are used
+
 What does the text-align property do for inline and block elements?
+- inline box: text-align property controls horizontal position of inline boxes within it
+- each inline box's vertical-align property aligns it vertically within its block box
+
 What does the vertical-align property do?
+- Specifies where an inline element should be aligned vertically, with respect to other content on the same line within its block element's box
+
 What are the values of the float property and how do they affect the alignment of elements on the page?
+- values: left, right, none (default)
+- The float CSS property specifies that an element should be placed along the left or right side of its container, allowing text and inline elements to wrap around it. The element is removed from the normal flow of the web page
+
 How does the clear property interact with float?
+- Whether to move this element below any prior floating elements in the document
+- values: left, right, both, none (default)
+
 How does the overflow property interact with float?
+- Action to take if element’s content is larger than the element itself
+- values: visible (default), hidden, scroll, auto
+
 What does the column-count property do?
+- Define number of columns to use in multi-column layout
+
+
 Explain the 4 position property values and their differences.
+- static: default position- relative: offset from its normal static position- absolute: at a particular offset within its containing element- fixed: at a fixed location within the browser window
+
 When should you use alignment versus float versus position for laying out elements on a page?
+- if possible, lay out an element by aligning its content
+- if alignment won't work, try floating the element
+- if floating won't work, try positioning the element
+
 What does display: inline do?  How is it different from inline-block?
+- display: inline means that the element is displayed inline, inside the current block on the same line
+- Difference from inline-block
+   + does not have top & bottom margins and padding / in-line-block has
+   + cannot have a width and height set / in-line block has
 
 
 
