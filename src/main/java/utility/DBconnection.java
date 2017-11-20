@@ -61,6 +61,7 @@ public class DBconnection {
                 int id = rs.getInt("taskid");
                 String task = rs.getString("taskname");
                 String duedate = rs.getString("duedate");
+                duedate = duedate.substring(0, duedate.indexOf(' '));
                 String category = rs.getString("category");
                 String priority = rs.getString("priority");
                 String userid = rs.getString("userid");
