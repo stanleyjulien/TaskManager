@@ -7,6 +7,8 @@ tasksController = function() {
 	var taskPage;
 	var initialised = false;
 
+
+
     /**
 	 * makes json call to server to get task list.
 	 * currently just testing this and writing return value out to console
@@ -22,6 +24,8 @@ tasksController = function() {
             // }
         }).done(displayTasksServer.bind()); //need reference to the tasksController object
     }
+
+
 
     /**
 	 * 111917kl
@@ -52,6 +56,9 @@ tasksController = function() {
 			}
 		});
 	}
+
+
+
 	
 	return { 
 		init : function(page, callback) { 
@@ -93,6 +100,91 @@ tasksController = function() {
 						
 					}
 				);
+
+
+
+
+                function sortTasks() {
+                    $(taskPage).find('#tblTasks tbody').empty();
+                    storageEngine.findAll('task', function(tasks) {
+                        tasks.sort(function(o1, o2) {
+                            return Date.parse(o1.requiredBy).compareTo(Date.parse(o2.requiredBy));
+                        });
+                        $.each(tasks, function(index, task) {
+                            if (!task.complete) {
+                                task.complete = false;
+                            }
+                            $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
+                            taskCountChanged();
+                            renderTable();
+                        });
+                    }, errorLogger);
+                }
+
+
+                $(taskPage).find('#dueHead').click(function (evt) {
+                    $(taskPage).find('#tblTasks tbody').empty();
+                    storageEngine.findAll('task', function(tasks) {
+                        tasks.sort(function(o2, o1) {
+                            return Date.parse(o1.requiredBy).compareTo(Date.parse(o2.requiredBy));
+                        });
+                        $.each(tasks, function(index, task) {
+                            if (!task.complete) {
+                                task.complete = false;
+                            }
+                            $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
+                            taskCountChanged();
+                            renderTable();
+                        });
+                    }, errorLogger);
+                });
+
+
+                $(taskPage).find('#priorityHead').click(function (evt) {
+                    $(taskPage).find('#tblTasks tbody').empty();
+                    storageEngine.findAll('task', function(tasks) {
+                        tasks.sort(function(o1, o2) {
+                        	var o1Priority = 0;
+                        	var o2Priority = 0;
+
+                        	if(o1.priority === 'High')
+							{
+								o1Priority = 3;
+							}
+							else if(o1.priority == 'Medium')
+							{
+                                o1Priority = 2;
+							}
+							else
+							{
+                                o1Priority = 1;
+							}
+
+
+                            if(o2.priority === 'High')
+                            {
+                                o2Priority = 3;
+                            }
+                            else if(o2.priority == 'Medium')
+                            {
+                                o2Priority = 2;
+                            }
+                            else
+                            {
+                                o2Priority = 1;
+                            }
+                            return o2Priority - o1Priority;
+                        });
+                        $.each(tasks, function(index, task) {
+                            if (!task.complete) {
+                                task.complete = false;
+                            }
+                            $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
+                            taskCountChanged();
+                            renderTable();
+                        });
+                    }, errorLogger);
+                });
 				
 				$(taskPage).find('#tblTasks tbody').on('click', '.editRow', 
 					function(evt) { 
@@ -163,6 +255,10 @@ tasksController = function() {
 					renderTable();
 				});
 			}, errorLogger);
-		} 
+		}
+
+
+
+
 	} 
 }();
