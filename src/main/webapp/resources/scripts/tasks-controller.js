@@ -6,6 +6,8 @@ tasksController = function() {
 	
 	var taskPage;
 	var initialised = false;
+    var dueascending = false;
+    var priorityascending = false;
 
     /**
 	 * makes json call to server to get task list.
@@ -128,9 +130,20 @@ tasksController = function() {
                 $(taskPage).find('#dueHead').click(function (evt) {
                     $(taskPage).find('#tblTasks tbody').empty();
                     storageEngine.findAll('task', function(tasks) {
-                        tasks.sort(function(o2, o1) {
-                            return Date.parse(o1.requiredBy).compareTo(Date.parse(o2.requiredBy));
-                        });
+                    	if(dueascending){
+                            tasks.sort(function(o2, o1) {
+                                return Date.parse(o1.requiredBy).compareTo(Date.parse(o2.requiredBy));
+                            });
+                            dueascending = false;
+						}
+						else
+						{
+                            tasks.sort(function(o1, o2) {
+                                return Date.parse(o1.requiredBy).compareTo(Date.parse(o2.requiredBy));
+                            });
+                            dueascending = true;
+						}
+
                         $.each(tasks, function(index, task) {
                             if (!task.complete) {
                                 task.complete = false;
@@ -146,38 +159,80 @@ tasksController = function() {
                 $(taskPage).find('#priorityHead').click(function (evt) {
                     $(taskPage).find('#tblTasks tbody').empty();
                     storageEngine.findAll('task', function(tasks) {
-                        tasks.sort(function(o1, o2) {
-                        	var o1Priority = 0;
-                        	var o2Priority = 0;
+                    	if(priorityascending)
+						{
+                            tasks.sort(function(o1, o2) {
+                                var o1Priority = 0;
+                                var o2Priority = 0;
 
-                        	if(o1.priority === 'High')
-							{
-								o1Priority = 3;
-							}
-							else if(o1.priority == 'Medium')
-							{
-                                o1Priority = 2;
-							}
-							else
-							{
-                                o1Priority = 1;
-							}
+                                if(o1.priority === 'High')
+                                {
+                                    o1Priority = 3;
+                                }
+                                else if(o1.priority == 'Medium')
+                                {
+                                    o1Priority = 2;
+                                }
+                                else
+                                {
+                                    o1Priority = 1;
+                                }
 
 
-                            if(o2.priority === 'High')
-                            {
-                                o2Priority = 3;
-                            }
-                            else if(o2.priority == 'Medium')
-                            {
-                                o2Priority = 2;
-                            }
-                            else
-                            {
-                                o2Priority = 1;
-                            }
-                            return o2Priority - o1Priority;
-                        });
+                                if(o2.priority === 'High')
+                                {
+                                    o2Priority = 3;
+                                }
+                                else if(o2.priority == 'Medium')
+                                {
+                                    o2Priority = 2;
+                                }
+                                else
+                                {
+                                    o2Priority = 1;
+                                }
+                                return o2Priority - o1Priority;
+                            });
+                            priorityascending = false;
+						}
+
+						else
+						{
+                            tasks.sort(function(o1, o2) {
+                                var o1Priority = 0;
+                                var o2Priority = 0;
+
+                                if(o1.priority === 'High')
+                                {
+                                    o1Priority = 1;
+                                }
+                                else if(o1.priority == 'Medium')
+                                {
+                                    o1Priority = 2;
+                                }
+                                else
+                                {
+                                    o1Priority = 3;
+                                }
+
+
+                                if(o2.priority === 'High')
+                                {
+                                    o2Priority = 1;
+                                }
+                                else if(o2.priority == 'Medium')
+                                {
+                                    o2Priority = 2;
+                                }
+                                else
+                                {
+                                    o2Priority = 3;
+                                }
+                                return o2Priority - o1Priority;
+                            });
+                            priorityascending = true;
+						}
+
                         $.each(tasks, function(index, task) {
                             if (!task.complete) {
                                 task.complete = false;

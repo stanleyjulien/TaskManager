@@ -104,10 +104,10 @@ function initScreen() {
 	$(document).ready(function() {
 		tasksController.init($('#taskPage'), function() {
 			tasksController.loadTasks();
-		});		
+		});
 	});
 }
-if (window.indexedDB) { 
+if (window.indexedDB) {
 	console.log("using indexedDB 111917kl");
 	$.getScript( "resources/scripts/tasks-indexeddb.js" )
 	.done(function( script, textStatus ) {
@@ -137,7 +137,7 @@ if (window.indexedDB) {
 	<td {{if complete == true}}class="taskCompleted"{{/if}}>${status}</td>
 	<td>
 		<nav>
-			{{if complete != true}}			
+			{{if complete != true}}
 				<a href="#" class="editRow" data-task-id="${id}">Edit</a>
 				<a href="#" class="completeRow" data-task-id="${id}">Complete</a>
 			{{/if}}
