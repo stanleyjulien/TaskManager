@@ -18,10 +18,6 @@ tasksController = function() {
         $.ajax("TaskServlet", {
             "type": "get",
 			dataType: "json"
-            // "data": {
-            //     "first": first,
-            //     "last": last
-            // }
         }).done(displayTasksServer.bind()); //need reference to the tasksController object
     }
 
@@ -219,13 +215,12 @@ tasksController = function() {
 							tasksController.loadTasks();
 							clearTask();
 							$(taskPage).find('#taskCreation').addClass('not');
-
                             $.ajax("TaskServlet", {
                                 "type": "get",
                                 dataType: "json",
                                 "data": {
-                                    "action": "insert",
-                                    "task": task
+                                    "action": "modify",
+                                    "task": JSON.stringify(task)
                                 }
                             }).done(displayTasksServer.bind());
 						}, errorLogger);

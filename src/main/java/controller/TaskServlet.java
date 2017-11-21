@@ -22,10 +22,15 @@ public class TaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String strtask = request.getParameter("task");
+        Task task = new Task();
+        if (strtask != null &&!"".equals(strtask)) {
+            Gson gson = new Gson();
+            task = gson.fromJson(strtask, Task.class);
+        }
         PrintWriter out = response.getWriter();
         DBconnection dBconnection = new DBconnection();
-        Task task = new Task();
-        if ("insert".equals(action) || "update".equals(action)) {
+        //Task task = new Task();
+        if ("modify".equals(action)) {
             dBconnection.modifyTask(task);
         } else if ("delete".equals(action)) {
             dBconnection.deleteTask(task.getId());
