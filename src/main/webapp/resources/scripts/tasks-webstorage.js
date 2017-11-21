@@ -21,7 +21,7 @@ storageEngine = function() {
 	    	if (!initialized) {
 				errorCallback('storage_api_not_initialized', 'The storage engine has not been initialized');
 			} else if (!localStorage.getItem(type)) {
-	    		localStorage.setItem(type, JSON.stringify({}));
+	    		//localStorage.setItem(type, JSON.stringify({}));
 	    	}
 	    	initializedObjectStores[type] = true;
 	    	successCallback(null);

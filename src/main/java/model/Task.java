@@ -9,6 +9,15 @@ public class Task {
     private String priority;
     private String user;
 
+    public Task() {
+        this.id = 17;
+        this.task = "This is Luat test from dummy data";
+        this.requiredBy = "2018-01-01";
+        this.category = "Work";
+        this.user = "luat";
+        this.priority = "High";
+    }
+
     public Task(int id, String task, String requiredBy, String category, String priority, String userId) {
         this.id = id;
         this.task = task;

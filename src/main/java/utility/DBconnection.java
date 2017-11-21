@@ -2,17 +2,24 @@ package utility;
 
 import model.Task;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class DBconnection {
 
-    String dburl = "jdbc:mysql://localhost:3306/tasklist";
+    String dburl = "jdbc:mysql://10.10.11.151:3306/tasklist";
+    final String username = "root";
+    final String password = "";
+
+    /*String dburl = "jdbc:mysql://localhost:3306/tasklist";
+    final String username = "root";
+    final String password = "root";*/
+
+
+    /*String dburl = "jdbc:mysql://wapproject.cdgwlcn3knwq.us-east-2.rds.amazonaws.com:3306/tasklist";
+    final String username = "luatnguyen";
+    final String password = "123456789";*/
 
     public DBconnection() {
         try {
@@ -27,8 +34,8 @@ public class DBconnection {
         String readQuery = "SELECT fullname from users where email = '" + email + "';";
         String fullname = "No information found for the requested user: " + email;
 
-        try (Connection con = DriverManager.getConnection(dburl, "root", "password");
-                Statement stmt = con.createStatement();) {
+        try (Connection con = DriverManager.getConnection(dburl,username, password);
+                Statement stmt = con.createStatement()) {
 
             System.out.println("the query: " + readQuery);
             ResultSet rs = stmt.executeQuery(readQuery);
@@ -52,8 +59,8 @@ public class DBconnection {
         String fullname = "No information found for the requested user: " + user;
         ArrayList<Task> taskList = new ArrayList<>();
 
-        try (Connection con = DriverManager.getConnection(dburl, "wapproject", "password123");
-             Statement stmt = con.createStatement();) {
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             Statement stmt = con.createStatement()) {
 
             System.out.println("the query: " + readQuery);
             ResultSet rs = stmt.executeQuery(readQuery);
@@ -76,7 +83,75 @@ public class DBconnection {
         }
 
         return taskList;
+    }
 
+    public void modifyTask(Task task) {
+        String readQuery = "SELECT taskid from task where taskid = " + task.getId() +";";
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             Statement stmt = con.createStatement()) {
+            System.out.println("the query: " + readQuery);
+            ResultSet rs = stmt.executeQuery(readQuery);
+            int id = 0;
+            while (rs.next()) {
+                id = rs.getInt("taskid");
+            }
+            stmt.close();
+            if (id > 0) {
+                updateTask(task);
+            } else {
+                insertTask(task);
+            }
+
+        } catch (SQLException s) {
+            System.out.println("Exception thrown in modify task ....");
+            s.printStackTrace();
+        }
+    }
+
+    private void updateTask(Task task) {
+        String query = "update task set taskname='"+task.getTask() + "', category='"+ task.getCategory() + "', duedate='" + task.getRequiredBy()
+                + "', priority='"+ task.getPriority()+"', userid='"+ task.getUser() + "' where taskid=" + task.getId();
+        System.out.println("Query: " + query);
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             PreparedStatement preparedStmt = con.prepareStatement(query)){
+             preparedStmt.executeUpdate();
+            preparedStmt.close();
+            con.close();
+        } catch (SQLException s) {
+            System.out.println("Exception thrown in update Task ....");
+            s.printStackTrace();
+        }
+    }
+
+    private void insertTask(Task task) {
+        String query = "INSERT INTO task (taskname, category, duedate, priority, userid) VALUES ('"+ task.getTask() + "', '"+ task.getCategory()
+                + "', '" + task.getRequiredBy() + "', '"+task.getPriority()+ "', '"+task.getUser()+"');";
+        System.out.println("Query: " + query);
+        //try (Connection con = DriverManager.getConnection(dburl, "luatnguyen", "123456789");
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             PreparedStatement preparedStmt = con.prepareStatement(query)){
+            preparedStmt.executeUpdate();
+            preparedStmt.close();
+            con.close();
+        } catch (SQLException s) {
+            System.out.println("Exception thrown in insert Task ....");
+            s.printStackTrace();
+        }
+    }
+
+    public void deleteTask(int id) {
+        String query = "DELETE FROM task WHERE taskid=" + id;
+        System.out.println("Query: " + query);
+        //try (Connection con = DriverManager.getConnection(dburl, "luatnguyen", "123456789");
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             PreparedStatement preparedStmt = con.prepareStatement(query)){
+            preparedStmt.executeUpdate();
+            preparedStmt.close();
+            con.close();
+        } catch (SQLException s) {
+            System.out.println("Exception thrown in delete Task ....");
+            s.printStackTrace();
+        }
     }
 
     public String mockRetrieveUserFullname(String email) {

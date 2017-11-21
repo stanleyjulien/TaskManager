@@ -191,6 +191,7 @@ tasksController = function() {
 						$(taskPage).find('#taskCreation').removeClass('not');
 						storageEngine.findById('task', $(evt.target).data().taskId, function(task) {
 							$(taskPage).find('form').fromObject(task);
+
 						}, errorLogger);
 					}
 				);
@@ -218,6 +219,15 @@ tasksController = function() {
 							tasksController.loadTasks();
 							clearTask();
 							$(taskPage).find('#taskCreation').addClass('not');
+
+                            $.ajax("TaskServlet", {
+                                "type": "get",
+                                dataType: "json",
+                                "data": {
+                                    "action": "insert",
+                                    "task": task
+                                }
+                            }).done(displayTasksServer.bind());
 						}, errorLogger);
 					}
 				});
@@ -236,15 +246,6 @@ tasksController = function() {
                     task.complete = false;
                 }
                 $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
-
-
-                /*storageEngine.save('task', task, function() {
-                    $(taskPage).find('#tblTasks tbody').empty();
-                    tasksController.loadTasks();
-                    clearTask();
-                    $(taskPage).find('#taskCreation').addClass('not');
-                }, errorLogger);*/
-
                 storageEngine.save('task', task, errorLogger);
                 taskCountChanged();
                 console.log('about to render table with server tasks');
@@ -267,9 +268,5 @@ tasksController = function() {
 				});
 			}, errorLogger);
 		}
-
-
-
-
 	} 
 }();
