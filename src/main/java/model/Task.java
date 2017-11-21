@@ -7,14 +7,14 @@ public class Task {
     private String requiredBy;
     private String category;
     private String priority;
-    private String userId;
+    private String user;
 
     public Task(int id, String task, String requiredBy, String category, String priority, String userId) {
         this.id = id;
         this.task = task;
         this.requiredBy = requiredBy;
         this.category = category;
-        this.userId = userId;
+        this.user = userId;
         this.priority = priority;
     }
 
@@ -58,11 +58,11 @@ public class Task {
         this.priority = priority;
     }
 
-    public String getUserId() {
-        return userId;
+    public String getUser() {
+        return user;
     }
 
-    public void setUserId(String userId) {
-        this.userId = userId;
+    public void setUser(String user) {
+        this.user = user;
     }
 }
