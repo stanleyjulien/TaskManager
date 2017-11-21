@@ -9,8 +9,8 @@ import java.util.List;
 public class DBconnection {
 
     String dburl = "jdbc:mysql://10.10.11.151:3306/tasklist";
-    final String username = "root";
-    final String password = "";
+    final String username = "root1";
+    final String password = "password";
 
     /*String dburl = "jdbc:mysql://localhost:3306/tasklist";
     final String username = "root";
