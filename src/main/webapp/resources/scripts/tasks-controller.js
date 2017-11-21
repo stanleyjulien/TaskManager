@@ -92,6 +92,14 @@ tasksController = function() {
 							function() {
 								$(evt.target).parents('tr').remove(); 
 								taskCountChanged();
+                                $.ajax("TaskServlet", {
+                                    "type": "get",
+                                    dataType: "json",
+                                    "data": {
+                                        "action": "delete",
+                                        "taskid": $(evt.target).data().taskId
+                                    }
+                                }).done(displayTasksServer.bind());
 							}, errorLogger);
 						
 					}

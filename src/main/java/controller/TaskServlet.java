@@ -33,7 +33,16 @@ public class TaskServlet extends HttpServlet {
         if ("modify".equals(action)) {
             dBconnection.modifyTask(task);
         } else if ("delete".equals(action)) {
-            dBconnection.deleteTask(task.getId());
+            String taskId = request.getParameter("taskid");
+            int id = 0;
+            if (taskId != null && !"".equals(taskId)) {
+                try {
+                    id = Integer.parseInt(taskId);
+                } catch (NumberFormatException nfe) {
+
+                }
+            }
+            dBconnection.deleteTask(id);
         } else if ("complete".equals(action)) {
             //TODO later
         }
