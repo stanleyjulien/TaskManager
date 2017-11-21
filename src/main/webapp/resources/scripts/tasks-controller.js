@@ -271,6 +271,14 @@ tasksController = function() {
 						storageEngine.save('task', task, function() {
 							tasksController.loadTasks();
 						},errorLogger);
+                        $.ajax("TaskServlet", {
+                            "type": "get",
+                            dataType: "json",
+                            "data": {
+                                "action": "complete",
+                                "taskid": $(evt.target).data().taskId
+                            }
+                        }).done(displayTasksServer.bind());
 					}, errorLogger);
 				});
 				
@@ -305,8 +313,11 @@ tasksController = function() {
             $(taskPage).find('#tblTasks tbody').empty();
             storageEngine.initObjectStore('task', errorLogger);
             $.each(tasks, function (index, task) {
-                if (!task.complete) {
+                if (!task.complete ) {
                     task.complete = false;
+                }
+                if (task.status == "Completed") {
+                    task.complete = true;
                 }
                 $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
                 storageEngine.save('task', task, errorLogger);
@@ -315,6 +326,7 @@ tasksController = function() {
                 renderTable(); //skip for now, this just sets style class for overdue tasks 111917kl
             });
 		},
+
 		loadTasks : function() {
 			$(taskPage).find('#tblTasks tbody').empty();
 			storageEngine.findAll('task', function(tasks) {

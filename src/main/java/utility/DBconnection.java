@@ -53,7 +53,7 @@ public class DBconnection {
     }*/
 
     public List<Task> retrieveTaskList(String user) {
-        String readQuery = "SELECT taskid, taskname, category, duedate, priority, userid, status from task";
+        String readQuery = "SELECT taskid, taskname, category, duedate, priority, userid, taskstatus from task";
         if (user != null && !"".equals(user) && !"all".equals(user)) {
             readQuery += " WHERE userid = '" + user + "';";
         }
@@ -70,7 +70,7 @@ public class DBconnection {
                 String category = rs.getString("category");
                 String priority = rs.getString("priority");
                 String userid = rs.getString("userid");
-                String status = rs.getString("status");
+                String status = rs.getString("taskstatus");
                 taskList.add(new Task(id, task, duedate, category, priority, userid, status));
             }
             stmt.close();
@@ -105,7 +105,7 @@ public class DBconnection {
 
     private void updateTask(Task task) {
         String query = "update task set taskname='" + task.getTask() + "', category='" + task.getCategory() + "', duedate='" + task.getRequiredBy()
-                + "', priority='" + task.getPriority() + "', userid='" + task.getUser() + "', completed='" + task.getStatus() + "' where taskid=" + task.getId();
+                + "', priority='" + task.getPriority() + "', userid='" + task.getUser() + "', taskstatus='" + task.getStatus() + "' where taskid=" + task.getId();
         System.out.println("Query: " + query);
         try (Connection con = DriverManager.getConnection(dburl, username, password);
              PreparedStatement preparedStmt = con.prepareStatement(query)) {
@@ -119,7 +119,7 @@ public class DBconnection {
     }
 
     private void insertTask(Task task) {
-        String query = "INSERT INTO task (taskname, category, duedate, priority, userid, completed) VALUES ('" + task.getTask() + "', '" + task.getCategory()
+        String query = "INSERT INTO task (taskname, category, duedate, priority, userid, taskstatus) VALUES ('" + task.getTask() + "', '" + task.getCategory()
                 + "', '" + task.getRequiredBy() + "', '" + task.getPriority() + "', '" + task.getUser() + "', '" + task.getStatus() + "');";
         System.out.println("Query: " + query);
         //try (Connection con = DriverManager.getConnection(dburl, "luatnguyen", "123456789");
@@ -145,6 +145,20 @@ public class DBconnection {
             con.close();
         } catch (SQLException s) {
             System.out.println("Exception thrown in delete Task ....");
+            s.printStackTrace();
+        }
+    }
+
+    public void completeTask(int id) {
+        String query = "update task set taskstatus='Completed' where taskid=" + id;
+        System.out.println("Query: " + query);
+        try (Connection con = DriverManager.getConnection(dburl, username, password);
+             PreparedStatement preparedStmt = con.prepareStatement(query)) {
+            preparedStmt.executeUpdate();
+            preparedStmt.close();
+            con.close();
+        } catch (SQLException s) {
+            System.out.println("Exception thrown in complete Task ....");
             s.printStackTrace();
         }
     }

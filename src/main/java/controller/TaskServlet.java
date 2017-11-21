@@ -33,7 +33,7 @@ public class TaskServlet extends HttpServlet {
         //Task task = new Task();
         if ("modify".equals(action)) {
             dBconnection.modifyTask(task);
-        } else if ("delete".equals(action)) {
+        } else {
             String taskId = request.getParameter("taskid");
             int id = 0;
             if (taskId != null && !"".equals(taskId)) {
@@ -43,9 +43,11 @@ public class TaskServlet extends HttpServlet {
 
                 }
             }
-            dBconnection.deleteTask(id);
-        } else if ("complete".equals(action)) {
-            //TODO later
+            if ("delete".equals(action)) {
+                dBconnection.deleteTask(id);
+            } else if ("complete".equals(action)) {
+                dBconnection.completeTask(id);
+            }
         }
 
         //List<Task> taskList = new MockData().retrieveTaskList();

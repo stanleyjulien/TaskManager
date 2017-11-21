@@ -50,7 +50,7 @@
 			</div>
             <div>
                 <label>Status </label><select name="status">
-                    <option value="Not Start">Not Start</option>
+                    <option selected value="Not Start">Not Start</option>
                     <option value="In Progress">In Progress</option>
                     <option value="Completed">Completed</option>
                 </select>
@@ -137,7 +137,7 @@ if (window.indexedDB) {
 	<td {{if complete == true}}class="taskCompleted"{{/if}}>${status}</td>
 	<td>
 		<nav>
-			{{if complete != true}}
+			{{if complete == false}}
 				<a href="#" class="editRow" data-task-id="${id}">Edit</a>
 				<a href="#" class="completeRow" data-task-id="${id}">Complete</a>
 			{{/if}}
