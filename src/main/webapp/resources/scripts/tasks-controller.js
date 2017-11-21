@@ -7,8 +7,6 @@ tasksController = function() {
 	var taskPage;
 	var initialised = false;
 
-
-
     /**
 	 * makes json call to server to get task list.
 	 * currently just testing this and writing return value out to console
@@ -17,7 +15,8 @@ tasksController = function() {
 	function retrieveTasksServer() {
         $.ajax("TaskServlet", {
             "type": "get",
-			dataType: "json"
+			dataType: "json",
+            data: {"selecteduser": $(taskPage).find('#selecteduser').val()}
         }).done(displayTasksServer.bind()); //need reference to the tasksController object
     }
 
@@ -204,6 +203,12 @@ tasksController = function() {
 					evt.preventDefault();
 					clearTask();
 				});
+
+                $(taskPage).find('#cancel').click(function(evt) {
+                    evt.preventDefault();
+                    clearTask();
+                    $(taskPage).find('#taskCreation').addClass('not');
+                });
 				
 				$(taskPage).find('#tblTasks tbody').on('click', '.completeRow', function(evt) { 					
 					storageEngine.findById('task', $(evt.target).data().taskId, function(task) {

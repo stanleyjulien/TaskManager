@@ -8,6 +8,7 @@ public class Task {
     private String category;
     private String priority;
     private String user;
+    private String status;
 
     public Task() {
         this.id = 17;
@@ -16,15 +17,17 @@ public class Task {
         this.category = "Work";
         this.user = "luat";
         this.priority = "High";
+        this.status = "Completed";
     }
 
-    public Task(int id, String task, String requiredBy, String category, String priority, String userId) {
+    public Task(int id, String task, String requiredBy, String category, String priority, String userId, String status) {
         this.id = id;
         this.task = task;
         this.requiredBy = requiredBy;
         this.category = category;
         this.user = userId;
         this.priority = priority;
+        this.status = status;
     }
 
     public int getId() {
@@ -73,5 +76,13 @@ public class Task {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getStatus() {
+        return this.status;
+    }
+
+    public void setCompleted(String status) {
+        this.status = status;
     }
 }

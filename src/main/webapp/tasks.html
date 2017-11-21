@@ -28,29 +28,37 @@
 					name="requiredBy" />
 			</div>
 			<div>
-				<label>Category</label> <select name="category">
+				<label>Category</label> <select class="large" name="category">
 					<option value="Personal">Personal</option>
 					<option value="Work">Work</option>
 				</select>
 			</div>
 
 			<div>
-				<label>Priority</label> <select name="priority">
+				<label>Priority</label> <select class="large" name="priority">
 				<option value="High">High</option>
 				<option value="Medium">Medium</option>
 				<option value="Low">Low</option>
 			</select>
 			</div>
 			<div>
-				<label>User</label> <select name="user">
+				<label>User</label> <select class="large" name="user">
 				<option value="luat">Luat Nguyen</option>
 				<option value="stanley">Stanley Julien</option>
 				<option value="samson">Samson Weldegebriel</option>
 			</select>
 			</div>
+            <div>
+                <label>Status </label><select name="status">
+                    <option value="Not Start">Not Start</option>
+                    <option value="In Progress">In Progress</option>
+                    <option value="Completed">Completed</option>
+                </select>
+            </div>
 			<nav>
 				<a href="#" id="saveTask">Save task</a>    <!-- https://stackoverflow.com/questions/4855168/what-is-href-and-why-is-it-used -->
 				<a href="#" id="clearTask">Clear task</a>
+                <a href="#" id="cancel">Cancel</a>
 			</nav>
 		</form>
 	</section>
@@ -58,10 +66,11 @@
 		<table id="tblTasks">
 			<colgroup>
 				<col width="30%">
-				<col width="15%">
-				<col width="15%">
-                <col width="15%">
-				<col width="25%">
+				<col width="12%">
+				<col width="12%">
+                <col width="12%">
+                <col width="12%">
+				<col width="22%">
 			</colgroup>
 			<thead>
 				<tr>
@@ -69,6 +78,7 @@
 					<th id="dueHead">Due</th>
                     <th id="priorityHead">Priority</th>
 					<th>Category</th>
+                    <th>Status</th>
 					<th>Actions</th>
 				</tr>
 			</thead>
@@ -76,8 +86,14 @@
 			</tbody>
 		</table>
 		<nav>
-			<a href="#" id="btnAddTask">Add task</a>
-			<a href="#" id="btnRetrieveTasks">Retrieve tasks from server</a>
+            <label>Please select a user: <select name="user2" id="selecteduser">
+                <option value="all">All</option>
+                <option value="luat">Luat Nguyen</option>
+                <option value="samson">Samson Weldegebriel</option>
+                <option value="stanley">Stanley Julien</option>
+            </select></label><br>
+			<a href="#" id="btnRetrieveTasks">Retrieve tasks from server</a> <br><br><br>
+            <a href="#" id="btnAddTask">Add task</a>
 		</nav>
 	</section>
 	</main>
@@ -118,6 +134,7 @@ if (window.indexedDB) {
 	<td {{if complete == true}}class="taskCompleted"{{/if}}><time datetime="${duedate}">${requiredBy}</time></td>
 	<td {{if complete == true}}class="taskCompleted"{{/if}}>${priority}</td>
 	<td {{if complete == true}}class="taskCompleted"{{/if}}>${category}</td>
+	<td {{if complete == true}}class="taskCompleted"{{/if}}>${status}</td>
 	<td>
 		<nav>
 			{{if complete != true}}			

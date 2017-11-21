@@ -14,9 +14,9 @@ public class MockData {
 
     public ArrayList<Task> retrieveTaskList() {
 
-        taskList.add(new Task(101, "first task", "2017-11-19", "Personal", "High", "luat"));
-        taskList.add(new Task(102, "second task", "2017-11-23", "Work", "Medium", "stanley"));
-        taskList.add(new Task(103, "third task", "2017-12-19", "Work", "Low", "samson"));
+        taskList.add(new Task(101, "first task", "2017-11-19", "Personal", "High", "luat", "Completed"));
+        taskList.add(new Task(102, "second task", "2017-11-23", "Work", "Medium", "stanley", "Completed"));
+        taskList.add(new Task(103, "third task", "2017-12-19", "Work", "Low", "samson", "Completed"));
 
         return taskList;
     }

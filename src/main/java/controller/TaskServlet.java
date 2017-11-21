@@ -22,6 +22,7 @@ public class TaskServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String action = request.getParameter("action");
         String strtask = request.getParameter("task");
+        String selecteduser = request.getParameter("selecteduser");
         Task task = new Task();
         if (strtask != null &&!"".equals(strtask)) {
             Gson gson = new Gson();
@@ -48,7 +49,7 @@ public class TaskServlet extends HttpServlet {
         }
 
         //List<Task> taskList = new MockData().retrieveTaskList();
-        List<Task> taskList = dBconnection.retrieveTaskList("luat");
+        List<Task> taskList = dBconnection.retrieveTaskList(selecteduser);
         String JSONtasks = new Gson().toJson(taskList);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");
