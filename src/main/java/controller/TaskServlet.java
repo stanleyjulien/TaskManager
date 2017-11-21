@@ -25,8 +25,8 @@ public class TaskServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
 
         String JSONtasks;
-        List<Task> taskList = new MockData().retrieveTaskList();
-        //List<Task> taskList = new DBconnection().retrieveTaskList("luat");
+        //List<Task> taskList = new MockData().retrieveTaskList();
+        List<Task> taskList = new DBconnection().retrieveTaskList("luat");
         JSONtasks = new Gson().toJson(taskList);
         response.setContentType("application/json");
         response.setCharacterEncoding("UTF-8");

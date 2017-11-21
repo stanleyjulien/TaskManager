@@ -230,11 +230,22 @@ tasksController = function() {
          */
 		loadServerTasks: function(tasks) {
             $(taskPage).find('#tblTasks tbody').empty();
+            storageEngine.initObjectStore('task', errorLogger);
             $.each(tasks, function (index, task) {
                 if (!task.complete) {
                     task.complete = false;
                 }
                 $('#taskRow').tmpl(task).appendTo($(taskPage).find('#tblTasks tbody'));
+
+
+                /*storageEngine.save('task', task, function() {
+                    $(taskPage).find('#tblTasks tbody').empty();
+                    tasksController.loadTasks();
+                    clearTask();
+                    $(taskPage).find('#taskCreation').addClass('not');
+                }, errorLogger);*/
+
+                storageEngine.save('task', task, errorLogger);
                 taskCountChanged();
                 console.log('about to render table with server tasks');
                 renderTable(); //skip for now, this just sets style class for overdue tasks 111917kl
