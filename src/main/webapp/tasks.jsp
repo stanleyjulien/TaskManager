@@ -30,7 +30,7 @@
 %>
 
 <div style="float: right"> <%-- <%= session.getAttribute("loggedInUser")%> --%> </div>
-<div style="float: right; margin-right: 10px; margin-top: 10px">Welcome ${loggedInUser}
+<div style="float: right; margin-right: 10px; margin-top: 10px">Welcome <%= session.getAttribute("loggedInUser")%><%--${loggedInUser} --%>
     <span>
         <form action="/Logout" name="logout">
             <input type="submit" value="Logout!">
