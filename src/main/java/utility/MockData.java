@@ -1,8 +1,11 @@
 package utility;
 
 import model.Task;
+import model.User;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 /** utility class to return mock data for testing
  *  @since 11/19/2017
@@ -20,6 +23,18 @@ public class MockData {
 
         return taskList;
     }
+
+    private HashMap<String, User> loginData = new HashMap<>();
+
+    public HashMap<String, User> retrieveLoginData(){
+        loginData.put("luat", new User("luat", "luat", "Luat Nguyen" ));
+        loginData.put("stanley", new User("stanley", "stanley", "Stanley Julien" ));
+        loginData.put("samson", new User("samson", "samson", "Samson Weldegebriel" ));
+        loginData.put("admin", new User("admin", "admin", "Administrator" ));
+        return loginData;
+    }
+
+
 
 }
 
