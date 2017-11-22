@@ -7,17 +7,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DBconnection {
-    String dburl = "jdbc:mysql://10.10.11.151:3306/tasklist";
+/*    String dburl = "jdbc:mysql://10.10.11.151:3306/tasklist";
     final String username = "root1";
-    final String password = "password";
+    final String password = "password";*/
 
     /*String dburl = "jdbc:mysql://localhost:3306/tasklist";
     final String username = "root";
     final String password = "root";*/
 
-    /*String dburl = "jdbc:mysql://wapproject.cdgwlcn3knwq.us-east-2.rds.amazonaws.com:3306/tasklist";
+    String dburl = "jdbc:mysql://wapproject.cdgwlcn3knwq.us-east-2.rds.amazonaws.com:3306/tasklist";
     final String username = "luatnguyen";
-    final String password = "123456789";*/
+    final String password = "123456789";
 
     public DBconnection() {
         try {

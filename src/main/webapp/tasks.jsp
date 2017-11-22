@@ -5,7 +5,7 @@
   Time: 04:51 PM
   To change this template use File | Settings | File Templates.
 --%>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="true" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +18,7 @@
     <script src="resources/scripts/jquery-serialization.js"></script>
     <script src="resources/scripts/tasks-controller.js"></script>
     <script src="resources/scripts/date.js"></script>
+    <script src="resources/scripts/jquery-init.js"></script>
 </head>
 <body>
 
@@ -126,35 +127,7 @@
 </main>
 <footer>You have <span id="taskCount"></span> tasks</footer>
 </body>
-<script>
-    function initScreen() {
-        $(document).ready(function () {
-            tasksController.init($('#taskPage'), function () {
-                tasksController.loadTasks();
-            });
-        });
-    }
 
-    if (window.indexedDB) {
-        console.log("using indexedDB 111917kl");
-        $.getScript("resources/scripts/tasks-indexeddb.js")
-            .done(function (script, textStatus) {
-                initScreen();
-            })
-            .fail(function (jqxhr, settings, exception) {
-                console.log('Failed to load indexed db script');
-            });
-    } else if (window.localStorage) {
-        console.log("using webstorage 111917kl");
-        $.getScript("resources/scripts/tasks-webstorage.js")
-            .done(function (script, textStatus) {
-                initScreen();
-            })
-            .fail(function (jqxhr, settings, exception) {
-                console.log('Failed to load web storage script');
-            });
-    }
-</script>
 
 <script id="taskRow" type="text/x-jQuery-tmpl">
 <tr>
